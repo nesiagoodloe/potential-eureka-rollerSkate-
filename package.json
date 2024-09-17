@@ -4,13 +4,14 @@
   "description": "rollerSkate",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js", 
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.20.0",
