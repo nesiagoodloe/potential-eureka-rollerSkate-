@@ -1,6 +1,6 @@
 <h1> update the ejs </h1>
 
-<h3> my site</h3> 
+<h3> my posts</h3> 
  <% for (var i=0; i< postData.length; i++ ) { %>
   <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
     <%= postData[i].post %> 
