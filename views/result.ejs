@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Survey and Personal Info Results</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Survey and Personal Info Results</h1>
+
+    <% if (personalInfo) { %>
+      <h2>Personal Info:</h2>
+      <p><strong>First Name:</strong> <%= personalInfo.Fname %></p>
+      <p><strong>Last Name:</strong> <%= personalInfo.Lname %></p>
+      <p><strong>Date:</strong> <%= personalInfo.date %></p>
+      <p><strong>Phone Number:</strong> <%= personalInfo.phonenum %></p>
+      <p><strong>L Number:</strong> <%= personalInfo.Lnumber %></p>
+    <% } %>
+
+    <% if (survey) { %>
+      <h2>Survey Results:</h2>
+      <p><strong>Bucket List Activities:</strong> <%= survey.activities.join(', ') %></p>
+      <p><strong>Landmark to Visit:</strong> <%= survey.landmark %></p>
+      <p><strong>Food to Cook:</strong> <%= survey.food %></p>
+      <p><strong>Top 5 Places to Visit:</strong> <%= survey.places %></p>
+    <% } %>
+
+    <a href="/" class="btn btn-primary mt-4">Back to Home</a>
+  </div>
+</body>
+</html>
