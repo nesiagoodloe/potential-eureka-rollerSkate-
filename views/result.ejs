@@ -29,7 +29,7 @@
                     <td><%= item.date %></td>
                     <td><%= item.phoneNumber %></td>
                     <td><%= item.lNumber %></td>
-                    <td><%= item.activities.join(', ') %></td>
+                    <td><%= Array.isArray(item.activities) ? item.activities.join(', ') : 'N/A' %></td>
                     <td><%= item.landmark %></td>
                     <td><%= item.foodChoice %></td>
                     <td><%= item.places %></td>
