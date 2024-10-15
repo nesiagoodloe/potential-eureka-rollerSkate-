@@ -48,7 +48,7 @@ app.post('/submit', async (req, res) => {
     date: date,
     phoneNumber: phonenum,
     lNumber: Lnumber,
-    activities: Array.isArray(activities) ? activities : (activities ? [activities] : []), // Handle single/multiple activities
+    activities: Array.isArray(activities) ? activities : [],
     landmark: landmark || '',
     foodChoice: dest || '',
     places: places || ''
