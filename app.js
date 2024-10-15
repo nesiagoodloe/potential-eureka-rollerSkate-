@@ -1,20 +1,22 @@
-//const's
+// const's
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient, ObjectId } = require('mongodb');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // MongoDB connection
 const uri = `mongodb+srv://nesiagoodloe03:${process.env.MONGO_PWD}@cluster0.pff8r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-//app.uses
+// app.uses
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static('./public/'));
 
-//mongo client
+// mongo client
 const client = new MongoClient(uri);
 
 // connect to MongoDB
@@ -30,7 +32,7 @@ run().catch(console.error);
 
 // render the main form
 app.get('/', (req, res) => {
-  res.sendFile('index.html'); // Make sure this points to your HTML form file
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Correctly resolve the path to index.html
 });
 
 // handle form submission
@@ -46,7 +48,7 @@ app.post('/submit', async (req, res) => {
     date: date,
     phoneNumber: phonenum,
     lNumber: Lnumber,
-    activities: Array.isArray(activities) ? activities : [],
+    activities: Array.isArray(activities) ? activities : (activities ? [activities] : []), // Handle single/multiple activities
     landmark: landmark || '',
     foodChoice: dest || '',
     places: places || ''
@@ -69,7 +71,6 @@ app.get('/read', async (req, res) => {
     res.status(500).send('Error retrieving data');
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running & listening on port ${PORT}`);
