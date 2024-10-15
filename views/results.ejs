@@ -8,19 +8,17 @@
 <body>
     <h1>Submitted Data</h1>
     <table border="1">
-        <thead>
+        <% data.forEach(item => { %>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date</th>
-                <th>Phone Number</th>
-                <th>L Number</th>
-                <th>Activities</th>
-                <th>Landmark</th>
-                <th>Food Choice</th>
-                <th>Places</th>
+                <td><%= item.phoneNumber %></td>
+                <td><%= item.lNumber %></td>
+                <td><%= Array.isArray(item.activities) ? item.activities.join(', ') : 'No activities' %></td>
+                <td><%= item.landmark %></td>
+                <td><%= item.foodChoice %></td>
+                <td><%= item.places %></td>
             </tr>
-        </thead>
+        <% }) %>
+        
         <tbody>
             <% data.forEach(function(item) { %>
                 <tr>

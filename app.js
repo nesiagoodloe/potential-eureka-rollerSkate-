@@ -63,12 +63,14 @@ app.post('/submit', async (req, res) => {
 app.get('/read', async (req, res) => {
   try {
     const results = await client.db("nesias-db").collection("my-collection").find({}).toArray();
-    res.render('results', { data: results }); // Pass the data to the EJS view
+    console.log('Fetched results:', results); // log the results to check their structure
+    res.render('results', { data: results });
   } catch (err) {
     console.error('Error fetching data:', err);
     res.status(500).send('Error retrieving data');
   }
 });
+
 
 
 app.listen(PORT, () => {
