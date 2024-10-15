@@ -1,23 +1,23 @@
-// Constants
+//const's
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // MongoDB connection
 const uri = `mongodb+srv://nesiagoodloe03:${process.env.MONGO_PWD}@cluster0.pff8r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-// App uses
+//app.uses
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('./public/'));
 
-// Mongo client
+//mongo client
 const client = new MongoClient(uri);
 
-// Connect to MongoDB
+// connect to MongoDB
 async function run() {
   try {
     await client.connect();
@@ -28,12 +28,12 @@ async function run() {
 }
 run().catch(console.error);
 
-// Render the main form
+// render the main form
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.ejs')); // Ensure this points to the correct HTML form file
+  res.sendFile('index.html'); // Make sure this points to your HTML form file
 });
 
-// Handle form submission
+// handle form submission
 app.post('/submit', async (req, res) => {
   console.log('Received POST request to /submit');
   console.log('Form data:', req.body);
@@ -52,18 +52,14 @@ app.post('/submit', async (req, res) => {
     places: places || ''
   };
 
-  // Insert into MongoDB
-  try {
-    await client.db("nesias-db").collection("my-collection").insertOne(formData);
-    // Redirect to /read to show the results
-    res.redirect('/read');
-  } catch (err) {
-    console.error('Error inserting data into MongoDB:', err);
-    res.status(500).send('Error saving data'); // Handle errors gracefully
-  }
+  // insert into mongo
+  await client.db("nesias-db").collection("my-collection").insertOne(formData);
+  
+  // redirect to /read to show the results
+  res.redirect('/read');
 });
 
-// Display the submitted data
+// display the submitted data
 app.get('/read', async (req, res) => {
   try {
     const results = await client.db("nesias-db").collection("my-collection").find({}).toArray();
@@ -73,6 +69,7 @@ app.get('/read', async (req, res) => {
     res.status(500).send('Error retrieving data');
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server is running & listening on port ${PORT}`);
