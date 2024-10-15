@@ -8,17 +8,20 @@
 <body>
     <h1>Submitted Data</h1>
     <table border="1">
-        <% data.forEach(item => { %>
+        <thead>
             <tr>
-                <td><%= item.phoneNumber %></td>
-                <td><%= item.lNumber %></td>
-                <td><%= Array.isArray(item.activities) ? item.activities.join(', ') : 'No activities' %></td>
-                <td><%= item.landmark %></td>
-                <td><%= item.foodChoice %></td>
-                <td><%= item.places %></td>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date</th>
+                <th>Phone Number</th>
+                <th>L Number</th>
+                <th>Activities</th>
+                <th>Landmark</th>
+                <th>Food Choice</th>
+                <th>Places</th>
+                <th>Actions</th> 
             </tr>
-        <% }) %>
-        
+        </thead>
         <tbody>
             <% data.forEach(function(item) { %>
                 <tr>
@@ -27,10 +30,16 @@
                     <td><%= item.date %></td>
                     <td><%= item.phoneNumber %></td>
                     <td><%= item.lNumber %></td>
-                    <td><%= item.activities.join(', ') %></td>
+                    <td><%= Array.isArray(item.activities) ? item.activities.join(', ') : 'No activities' %></td>
                     <td><%= item.landmark %></td>
                     <td><%= item.foodChoice %></td>
                     <td><%= item.places %></td>
+                    <td>
+                        <a href="/update/<%= item._id %>">Update</a> 
+                        <form action="/delete/<%= item._id %>" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             <% }); %>
         </tbody>

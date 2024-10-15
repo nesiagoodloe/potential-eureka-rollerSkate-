@@ -23,14 +23,26 @@
 
   <h5>Survey:</h5><br>
 
-  <label>Activities (comma-separated):</label>
-  <input type="text" name="activities" value="<%= response.activities.join(', ') %>" required><br>
+  <label>Activities:</label><br>
+  <% ['Bungee jumping', 'Zip Line', 'Skydiving', 'Flying a Helicopter', 'Sandboarding in the desert'].forEach(function(activity) { %>
+    <input type="checkbox" name="activities" value="<%= activity %>" 
+      <%= response.activities.includes(activity) ? 'checked' : '' %> 
+    > <%= activity %><br>
+  <% }); %>
 
-  <label>Landmark:</label>
-  <input type="text" name="landmark" value="<%= response.landmark %>" required><br>
+  <label>Landmark:</label><br>
+  <% ['The Eiffel Tower', 'Taj Mahal', 'The Great Wall of China'].forEach(function(landmark) { %>
+    <input type="radio" name="landmark" value="<%= landmark %>" 
+      <%= response.landmark === landmark ? 'checked' : '' %> 
+    > <%= landmark %><br>
+  <% }); %>
 
-  <label>Food Choice:</label>
-  <input type="text" name="dest" value="<%= response.foodChoice %>" required><br>
+  <label>Food Choice:</label><br>
+  <% ['Italian', 'Mexican', 'Japanese', 'Indian', 'Chinese'].forEach(function(food) { %>
+    <input type="radio" name="dest" value="<%= food %>" 
+      <%= response.foodChoice === food ? 'checked' : '' %> 
+    > <%= food %><br>
+  <% }); %>
 
   <label>Places to Visit:</label>
   <input type="text" name="places" value="<%= response.places %>" required><br><br>

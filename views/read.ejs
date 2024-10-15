@@ -15,7 +15,7 @@
             <p>No responses available.</p>
         <% } else { %>
             <% postData.forEach(post => { %>
-                <% if (post && post.firstName && post.lastName) { %> <!-- Only show valid entries -->
+                <% if (post && post.firstName && post.lastName) { %> 
                     <div class="card mb-3">
                         <div class="card-body">
                             <p><strong>Name:</strong> <%= post.firstName %> <%= post.lastName %></p>
