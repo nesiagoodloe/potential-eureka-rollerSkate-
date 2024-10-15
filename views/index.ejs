@@ -1,72 +1,116 @@
-<%=myServerVariable %> 
-
-<!--<h1>Nesia's ejs</h1>
-  <br> -->
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Nesia's Bucket List Survey</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/styles/style.css">
+    <title>Bucket List Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
+
 <body>
-  <div class="container"></div>
-    <h2>Nesia's Bucket List Survey</h2>
-    
-    <!-- First Card: Personal Info -->
-    <div class="card">
-        <form id="form" action="/submitForm" method="POST">
-            <h5>Enter Your Information:</h5>
-            <label id="Fname">First name:</label>
-            <input type="text" id="Fname1" name="Fname" placeholder='Nicki'><br><br>
+    <div class="container">
+        <h2>Nesia's Bucket List Survey</h2>
 
-            <label id="Lname">Last name:</label>
-            <input type="text" id="Lname1" name="Lname" placeholder='Brown'><br><br>
+        <!-- Single Form for Personal Info and Survey -->
+        <div class="card mb-4">
+            <form id="combinedForm" action="/submit" method="POST">
+                <h5>Enter Your Information:</h5>
 
-            <label id="start">Today's Date:</label>
-            <input type="datetime-local" id="date" name="date"><br><br>
+                <div class="mb-3">
+                    <label for="Fname" class="form-label">First name:</label>
+                    <input type="text" id="Fname" name="Fname" class="form-control" placeholder='First Name' required>
+                </div>
 
-            <label id='phonenum'>Phone Number:</label>
-            <input type="tel" id='phone' name='phonenum' placeholder='012-345-6789'><br><br>
+                <div class="mb-3">
+                    <label for="Lname" class="form-label">Last name:</label>
+                    <input type="text" id="Lname" name="Lname" class="form-control" placeholder='Last Name' required>
+                </div>
 
-            <label id='Lnumber'>L Number:</label>
-            <input type="text" id='Lnum' name='Lnumber' placeholder='L12345678'><br><br>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Today's Date:</label>
+                    <input type="datetime-local" id="date" name="date" class="form-control" required>
+                </div>
 
-            <h5>Survey:</h5><br>
+                <div class="mb-3">
+                    <label for='phonenum' class="form-label">Phone Number:</label>
+                    <input type="tel" id='phonenum' name='phonenum' class="form-control" placeholder='012-345-6789'
+                        required>
+                </div>
 
-            <!-- Checkbox Input -->
-            <p>Select all activities you have on your bucket list:</p>
-            <input type='checkbox' name='activities' value='Bungee Jumping'><label id='bjump'>Bungee Jumping</label><br>
-            <input type='checkbox' name='activities' value='Zip Line'><label id='zipline'>Zip Line</label><br>
-            <input type='checkbox' name='activities' value='Skydiving'><label id='skydiving'>Skydiving</label><br>
-            <input type='checkbox' name='activities' value='Flying a Helicopter'><label id='fcopter'>Flying a Helicopter</label><br>
-            <input type='checkbox' name='activities' value='Sandboarding in the desert'><label id='sdesert'>Sandboarding in the desert</label><br><br>
+                <div class="mb-3">
+                    <label for='Lnumber' class="form-label">L Number:</label>
+                    <input type="text" id='Lnumber' name='Lnumber' class="form-control" placeholder='L12345678'
+                        required>
+                </div>
 
-            <!-- Radio Input -->
-            <p>Which landmark would you like to visit the most?</p>
-            <input type='radio' name='landmark' value='The Eiffel Tower'>The Eiffel Tower<br>
-            <input type='radio' name='landmark' value='Taj Mahal'>Taj Mahal<br>
-            <input type='radio' name='landmark' value='The Great Wall of China'>The Great Wall of China<br><br>
+                <h5>Survey:</h5>
+                <!-- Checkbox Input -->
+                <p>Select all activities you have on your bucket list:</p>
+                <div class="form-check">
+                    <input type='checkbox' name='activities' value='Bungee Jumping' class="form-check-input">
+                    <label class="form-check-label">Bungee Jumping</label>
+                </div>
+                <div class="form-check">
+                    <input type='checkbox' name='activities' value='Zip Line' class="form-check-input">
+                    <label class="form-check-label">Zip Line</label>
+                </div>
+                <div class="form-check">
+                    <input type='checkbox' name='activities' value='Skydiving' class="form-check-input">
+                    <label class="form-check-label">Skydiving</label>
+                </div>
+                <div class="form-check">
+                    <input type='checkbox' name='activities' value='Flying a Helicopter' class="form-check-input">
+                    <label class="form-check-label">Flying a Helicopter</label>
+                </div>
+                <div class="form-check">
+                    <input type='checkbox' name='activities' value='Sandboarding in the desert'
+                        class="form-check-input">
+                    <label class="form-check-label">Sandboarding in the desert</label>
+                </div>
 
-            <!-- Dropdown Input -->
-            <p>Which type of food would you like to learn how to cook:</p>
-            <select name="dest" id="dest">
-                <option value="sel">Select</option>
-                <option value="Italian">Italian</option>
-                <option value="Mexican">Mexican</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Thai">Thai</option>
-            </select><br><br>
+                <!-- Radio Input -->
+                <p>Which landmark would you like to visit the most?</p>
+                <div class="form-check">
+                    <input type='radio' name='landmark' value='The Eiffel Tower' class="form-check-input" required>
+                    <label class="form-check-label">The Eiffel Tower</label>
+                </div>
+                <div class="form-check">
+                    <input type='radio' name='landmark' value='Taj Mahal' class="form-check-input">
+                    <label class="form-check-label">Taj Mahal</label>
+                </div>
+                <div class="form-check">
+                    <input type='radio' name='landmark' value='The Great Wall of China' class="form-check-input">
+                    <label class="form-check-label">The Great Wall of China</label>
+                </div>
 
-            <p>Last, Name your top 5 places you would like to visit:</p>
-            <input type='text' name='places' placeholder='Ex. Bora Bora, Maldives'><br><br>
+                <!-- Dropdown Input -->
+                <p>Which type of food would you like to learn how to cook:</p>
+                <select name="dest" id="dest" class="form-select" required>
+                    <option value="sel">Select</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Chinese">Chinese</option>
+                </select>
 
-            <button id="submitForm" type="submit" class="btn btn-primary">Submit</button>
-            <input type="reset">
-        </form>
+                <!-- Textarea Input -->
+                <h5>What other places do you want to visit?</h5>
+                <textarea name="places" class="form-control" placeholder="List your desired places here."
+                    rows="3"></textarea>
+
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>
+        </div>
+
+        <a href='https://validator.w3.org/nu/#file' target='_blank'>Nu Validator</a><br>
+        <a href='https://github.com/nesiagoodloe/Hotel_Lab' target='_blank'>Hotel Repo</a>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="/scripts/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>

@@ -1,12 +1,41 @@
-<h1> update the ejs </h1>
-
-<h3> my posts</h3> 
- <% for (var i=0; i< postData.length; i++ ) { %>
-  <form method="POST" action="/update/<%= postData[i]._id %>" style="display: inline-block">  
-    <%= postData[i].post %> 
-    <input type="submit" value="update"> 
-  </form>
-  <br/>
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success"><%= success %></div>
 <% } %>
 
-<a href="/read">goes back to read</a>
+<h2>Update Information</h2>
+<form method="POST" action="/update/<%= response._id %>">
+  <h5>Enter Your Information:</h5>
+
+  <label>First Name:</label>
+  <input type="text" name="Fname" value="<%= response.firstName %>" required><br>
+
+  <label>Last Name:</label>
+  <input type="text" name="Lname" value="<%= response.lastName %>" required><br>
+
+  <label>Date:</label>
+  <input type="date" name="date" value="<%= response.date %>" required><br>
+
+  <label>Phone Number:</label>
+  <input type="tel" name="phonenum" value="<%= response.phoneNumber %>" required><br>
+
+  <label>L Number:</label>
+  <input type="text" name="Lnumber" value="<%= response.lNumber %>" required><br>
+
+  <h5>Survey:</h5><br>
+
+  <label>Activities (comma-separated):</label>
+  <input type="text" name="activities" value="<%= response.activities.join(', ') %>" required><br>
+
+  <label>Landmark:</label>
+  <input type="text" name="landmark" value="<%= response.landmark %>" required><br>
+
+  <label>Food Choice:</label>
+  <input type="text" name="dest" value="<%= response.foodChoice %>" required><br>
+
+  <label>Places to Visit:</label>
+  <input type="text" name="places" value="<%= response.places %>" required><br><br>
+
+  <input type="submit" value="Update" class="btn btn-primary">
+</form>
+
+<a href="/read" class="btn btn-secondary">Back to List</a>
