@@ -4,6 +4,6 @@ In this application the user can fill out a survey. The results will post on ano
 # Issues
 
 [https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/1](url) <br>
-[https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/3<br>
-https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/4<br>
+[https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/3](url) <br>
+https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/4](url) <br>
 https://github.com/nesiagoodloe/potiential-eureka-rollerSkate-/issues/5](url)
